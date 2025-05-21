@@ -116,7 +116,7 @@ Disminuye la velocidad del vehículo correspondiente a la placa dada.
 
 En el fichero ```src/App.java```, el fragmento de código que has desarrollado para que la aplicación funcione es el siguiente:
 
-```mermaid
+```
 public class App {
 public static void main(String[] args) {
 Model modelo = new Model();
