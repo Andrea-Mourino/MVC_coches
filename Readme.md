@@ -69,3 +69,62 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+## Funciones del Proyecto
+# Modelo
+
+```crearVehiculo(String tipo, String placa)```
+Genera un nuevo vehículo con el tipo y la placa especificados, y lo incorpora al estacionamiento.
+
+```obtenerVehiculo(String placa)```
+Retorna el vehículo asociado a la placa ingresada. Si no se encuentra, se lanza una excepción.
+
+```modificarVelocidad(String placa, Integer velocidadNueva)```
+Actualiza la velocidad del vehículo identificado por la placa. Si no existe, se genera una excepción.
+
+```consultarVelocidad(String placa)```
+Muestra la velocidad actual del vehículo correspondiente a la placa dada.
+
+```listarVehiculos()```
+Devuelve una colección con todos los vehículos almacenados en el estacionamiento.
+
+## Vista
+```mostrarVelocidad(String placa, Integer velocidad)```
+Presenta en la consola la velocidad actual de un vehículo en el formato: placa: velocidad km/h.
+
+```desplegarTodosLosVehiculos(ArrayList<Vehiculo> vehiculos)```
+Muestra en consola un listado de todos los vehículos registrados. Si no hay datos, se informa que no existen registros disponibles.
+
+```menuInteractivo()```
+Despliega un menú en la consola que permite al usuario ejecutar las siguientes opciones:
+
+1. Registrar un nuevo vehículo.
+
+2. Incrementar o reducir la velocidad de un vehículo.
+
+3. Visualizar todos los vehículos registrados.
+
+4. Terminar la aplicación.
+
+## Controlador
+```incrementarVelocidad(String placa, Integer velocidadNueva)```
+Aumenta la velocidad del vehículo identificado por su placa.
+
+```reducirVelocidad(String placa, Integer velocidadNueva)```
+Disminuye la velocidad del vehículo correspondiente a la placa dada.
+
+## App
+
+En el fichero ```src/App.java```, el fragmento de código que has desarrollado para que la aplicación funcione es el siguiente:
+
+```mermaid
+public class App {
+public static void main(String[] args) {
+Model modelo = new Model();
+Controller controlador = new Controller();
+        View vista = new View();
+        vista.menu();
+    }
+}
+```
+Este bloque de código pone en marcha las instancias de las clases ```Model```, ```Controller``` y ```View```, y posteriormente invoca el método ```menu()``` de la clase View para comenzar la interacción con el usuario.
+
