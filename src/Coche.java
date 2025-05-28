@@ -36,6 +36,24 @@ public class Coche {
     public void disminuirVelocidad(int decremento) {
         this.velocidad -= decremento;
     }
+    public void avanzar(double distancia) {
+        double consumo = calcularConsumo(distancia);
+        if (gasolina >= consumo) {
+            gasolina -= consumo;
+            System.out.println(modelo + " ha avanzado " + distancia + " km. Gasolina restante: " + gasolina + " litros.");
+        } else {
+            System.out.println(modelo + " no tiene suficiente gasolina para avanzar.");
+        }
+    }
+
+    /**
+     * Calcula el consumo de gasolina según la distancia y velocidad
+     */
+    private double calcularConsumo(double distancia) {
+        double consumoPorKm = 0.05 + (velocidad * 0.001); // fórmula de ejemplo
+        return distancia * consumoPorKm;
+    }
+
     @Override
     public String toString() {
         return "Coche{" +

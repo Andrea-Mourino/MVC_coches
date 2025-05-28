@@ -1,3 +1,19 @@
+# Examen
+
+1. Hice fue ingresar un valor double llamado ```gasolina``` en el public class coche
+2. Le hice un get a gasolina que retorne gasolina(litros)
+3. Al toString le agregue en el return la gasolina 
+4. En el Model cree un public void ```ponerGasolina``` y tambien un ```Avanzar```
+5. 
+
+
+
+
+
+
+
+
+
 # Arquitectura MVC
 
 Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra
