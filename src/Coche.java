@@ -50,7 +50,7 @@ public class Coche {
      * Calcula el consumo de gasolina según la distancia y velocidad
      */
     private double calcularConsumo(double distancia) {
-        double consumoPorKm = 0.05 + (velocidad * 0.001); // fórmula de ejemplo
+        double consumoPorKm = 0.05 + (velocidad * 0.001); // ejemplo
         return distancia * consumoPorKm;
     }
 
