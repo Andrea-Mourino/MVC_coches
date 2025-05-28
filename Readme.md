@@ -4,7 +4,7 @@
 2. Le hice un get a gasolina que retorne gasolina(litros)
 3. Al toString le agregue en el return la gasolina 
 4. En el Model cree un public void ```ponerGasolina``` y tambien un ```Avanzar```
-5. Hacer un if que muestre el resultando dependiendo de que al cantidad de gasolina es optima y si sobra que muestre el resultado. Si no, que salte el else y muestre un sout diciendo que no tiene suficiente gasolina
+5. Hacer un if que muestre el resultando dependiendo de que al cantidad de gasolina es optima y si sobra que muestre el resultado. Si no, que salte el else y muestre un sout diciendo que no tiene suficiente gasolina.
 
 
 
