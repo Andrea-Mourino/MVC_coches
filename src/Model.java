@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Clase encargada de manejar los datos
@@ -99,4 +100,28 @@ public class Model {
             }
         }
     }
+
+    public void ponerGasolina(int litros) {
+    int ingresar;
+
+    Scanner scan= new Scanner(System.in);
+
+    System.out.println("Ingresar la cantidad de gasolina: ");
+
+    }
+
+    public void Avanzar (int metros) {
+    int i1= 0;
+    int i2;
+
+    Scanner scan= new Scanner(System.in);
+
+    System.out.println("Ingresar la cantidad de metros recorridos: ");
+
+
+
+    }
+
+
+
 }

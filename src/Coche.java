@@ -11,11 +11,14 @@ public class Coche {
     String matricula;
     String modelo;
     Integer velocidad;
+    double gasolina;
+
 
     public Coche(String modelo, String matricula) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.velocidad = 0;
+        this.gasolina = 100;
     }
     public String getMatricula() {
         return matricula;
@@ -26,6 +29,7 @@ public class Coche {
     public Integer getVelocidad() {
         return velocidad;
     }
+    public double getGasolina() { return gasolina; }
     public void aumentarVelocidad(int incremento) {
         this.velocidad += incremento;
     }
@@ -37,7 +41,8 @@ public class Coche {
         return "Coche{" +
                 "matricula='" + matricula + '\'' +
                 ", modelo='" + modelo + '\'' +
-                ", velocidad=" + velocidad +
+                ", velocidad=" + velocidad + '\'' +
+                ", galosina=" + gasolina +
                 '}';
     }
 }
