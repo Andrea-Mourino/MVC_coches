@@ -2,17 +2,38 @@
 
 1. Hice fue ingresar un valor double llamado ```gasolina``` en el public class coche
 2. Le hice un get a gasolina que retorne gasolina(litros)
-3. Al toString le agregue en el return la gasolina 
+3. Al toString le agregue en el return la gasolina
 4. En el Model cree un public void ```ponerGasolina``` y tambien un ```Avanzar```
 5. Hacer un if que muestre el resultando dependiendo de que al cantidad de gasolina es optima y si sobra que muestre el resultado. Si no, que salte el else y muestre un sout diciendo que no tiene suficiente gasolina.
 
 
+# Examen 2
 
+1. Primero crear una interfaz llamada ```observer``` donde crearemos un void ```actualizarGasolina``` que hara notificar al obsservador de cuanta gasolina queda en el deposito
+2. Creamos una lista de observadores que quieren ser notificados cuando cambie la gasolina que seria con un ArrayList y tambien añadimos la capacidad MAXIMA del deposito
+3. Seguidamente creamos un nuevo metodo para registrar un nuevo observador (por ejemplo una alarma) y luego otro para notificar a todos los observadores un mensaje cuando se actualice la gasolina
+4. De ultimo en el View creamos un ```mostrarMensaje``` y en este codigo se ve el del observer:
 
+```
+@Override
+public void actualizarGasolina(String mensaje) {
+   System.out.println("Alerta de Gasolina: " + mensaje);
+   //Este método se llama cada vez que cambia el nivel de gasolina.
+   //El mensaje recibido tendrá el formato: "Nivel de gasolina: 8"
 
+   //Separamos el texto usando ":" como separador
+   String[] partesDelMensaje = mensaje.split(":");
 
+   //Tomamos la segunda parte (el número), quitamos espacios y lo convertimos a entero
+   String textoDelNivel = partesDelMensaje[1].trim();
+   int nivelDeGasolina = Integer.parseInt(textoDelNivel);
 
-
+   //Si el nivel es menor que 10, mostramos una advertencia
+   if (nivelDeGasolina < 10) {
+       System.out.println("[Alerta] Quedan " + nivelDeGasolina + " litros de gasolina. Recomendado repostar pronto.");
+   }
+}
+```
 
 # Arquitectura MVC
 
