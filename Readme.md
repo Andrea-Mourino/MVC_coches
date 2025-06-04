@@ -39,11 +39,11 @@ public void actualizarGasolina(String mensaje) {
 
 Captura donde se muestra que el coche al azanzar pierde gasolina y al bajar de 10litros salta la alerta el aviso.
 
-![Captura de pantalla_2025-06-04_14-20-28.png](../../Im%C3%A1genes/Captura%20de%20pantalla_2025-06-04_14-20-28.png)
+![Captura de pantalla_2025-06-04_14-20-28](https://github.com/user-attachments/assets/6c263a9d-83f9-479f-9391-ce531e2d5680)
 
 Captura donde se muestra que despues de repostar ya no salta el aviso de que queda poca gasolina
+![Captura de pantalla_2025-06-04_14-19-06](https://github.com/user-attachments/assets/8c2b4ab9-f57b-42f3-a944-c72a87d37986)
 
-![Captura de pantalla_2025-06-04_14-19-06.png](../../Im%C3%A1genes/Captura%20de%20pantalla_2025-06-04_14-19-06.png)
 
 
 
