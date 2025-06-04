@@ -38,13 +38,17 @@ public void actualizarGasolina(String mensaje) {
 
 # MVC
 ```mermaid
-    @Override
-    public String toString() {
-        return "Coche{" +
-                "matricula='" + matricula + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", velocidad=" + velocidad +
-                '}';
+    public void ponerGasolina(int litrosRepostar) {
+        if (litrosRepostar <= 0) {
+            System.out.println("Cantidad no valida. Agregue un valor positivo.");
+            return;
+        }
+        litros += litrosRepostar;
+        System.out.println("Se han añadido " + litrosRepostar + " litros. Total: " + litros + " litros.");
+    }
+
+    public int getGasolinaActual() {
+        return litros;
 ```
 
 # Arquitectura MVC
