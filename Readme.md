@@ -50,6 +50,25 @@ Captura donde se muestra que despues de repostar ya no salta el aviso de que que
 
 # MVC
 ```mermaid
+sequenceDiagram
+    participant View
+    participant Controller
+    participant observer
+    participant Model
+    %% Proceso de repostar
+    Controller->>+Model: ponerGasolinaC()
+    Model->>+observer: update()
+    deactivate observer
+    deactivate Model
+    observer->>View: actualizarGasolina()
+   
+
+%% Proceso de avanzar
+    Controller->>+Model: avanzar()
+    Model->>+observer: update()
+    deactivate Model
+    deactivate observer
+    observer->>View: actualizarGasolina()
 
 ```
 
