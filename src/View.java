@@ -5,10 +5,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Clase encargada de la interacción con el usuario
- */
-public class View {
+public class View implements observer {
+    private final Controller controller;
+    private final Scanner sc = new Scanner(System.in);
+
+    public View(Controller controller) {
+        this.controller = controller;
+    }
     /**
      * Muestra la velocidad de un coche
      * @param matricula del coche
@@ -29,72 +32,102 @@ public class View {
             }
         }
     }
-    public static void menu() {
-        Scanner scanner = new Scanner(System.in);
+    public void menu() {
 
-        Model miModel = new Model();
-        View miView = new View();
-        Controller miController = new Controller();
         int opcion;
-
-
-
         do {
-            System.out.println("--- Menú Principal ---");
-            System.out.println("1. Crear coche");
-            System.out.println("2. Aumentar velocidad");
-            System.out.println("3. Disminuir velocidad");
-            System.out.println("4. Mostrar todos los coches");
+            System.out.println("\n MENÚ");
+
+            System.out.println("1. Aumentar velocidad");
+            System.out.println("2. Disminuir velocidad");
+            System.out.println("3. Mostrar gasolina actual");
+            System.out.println("4. Avanzar");
+            System.out.println("5. Repostar gasolina");
             System.out.println("0. Salir");
-            System.out.print("Elige una opción: ");
-
-            opcion = scanner.nextInt();
-
+            System.out.print("Seleccione una opción: ");
+            opcion = sc.nextInt();
 
             switch (opcion) {
 
                 case 1:
-                    System.out.print("Introduce el modelo del coche: ");
-                    String modelo = scanner.nextLine();
-                    System.out.print("Introduce la matrícula del coche: ");
-                    String matricula = scanner.nextLine();
-                    miModel.crearCoche(modelo, matricula);
-                    System.out.println("Coche creado correctamente.");
+                    modificarVelocidad(true);
                     break;
                 case 2:
-                    System.out.print("Introduce la matrícula del coche: ");
-                    String matriculaAumentar = scanner.nextLine();
-                    System.out.print("Introduce la velocidad a aumentar: ");
-                    int velocidadAumentar = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea
-                    miController.aumentarVelocidad(matriculaAumentar, miModel.getVelocidad(matriculaAumentar) + velocidadAumentar);
-                    System.out.println("Velocidad aumentada correctamente.");
+                    modificarVelocidad(false);
                     break;
                 case 3:
-                    System.out.print("Introduce la matrícula del coche: ");
-                    String matriculaDisminuir = scanner.nextLine();
-                    System.out.print("Introduce la velocidad a disminuir: ");
-                    int velocidadDisminuir = scanner.nextInt();
-                    scanner.nextLine(); // Consumir el salto de línea
-                    miController.disminuirVelocidad(matriculaDisminuir, miModel.getVelocidad(matriculaDisminuir) - velocidadDisminuir);
-                    System.out.println("Velocidad disminuida correctamente.");
+                    mostrarGasolina();
                     break;
-
                 case 4:
-                    miView.mostrarTodosLosCoches(miModel.getTodosLosCoches());
+                    avanzar();
+                    break;
+                case 5:
+                    repostar();
                     break;
                 case 0:
-                    System.out.println("Saliendo del programa...");
+                    System.out.println("Saliendo del sistema...");
                     break;
                 default:
-                    System.out.println("Opción no válida");
-                    break;
-
-
+                    System.out.println("Opción no valida.");
             }
-
         } while (opcion != 0);
-
     }
 
+    private void modificarVelocidad(boolean aumentar) {
+        sc.nextLine(); // limpiar buffer
+        System.out.print("Introducir la matrícula del coche: ");
+        String matricula = sc.nextLine().trim();
+
+        System.out.print("Introducir el valor a " + (aumentar ? "aumentar" : "disminuir") + ": ");
+        int valor = sc.nextInt();
+
+        if (aumentar) {
+            controller.aumentarVelocidad(matricula, valor);
+        } else {
+            controller.disminuirVelocidad(matricula, valor);
+        }
+    }
+
+    private void mostrarGasolina() {
+        int gasolina = controller.consultarGasolina();
+        System.out.println("Gasolina que tienes actualmente: " + gasolina + " litros.");
+    }
+
+    private void avanzar() {
+        System.out.print("Introducir los metros a avanzar: ");
+        int metros = sc.nextInt();
+
+        System.out.print("Introducir la velocidad actual (km/h): ");
+        int velocidad = sc.nextInt();
+        controller.avanzar(metros, velocidad);
+    }
+
+    private void repostar() {
+        System.out.print("Introducir los litros de gasolina que quieres poner: ");
+        int litros = sc.nextInt();
+        controller.repostarGasolina(litros);
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
+
+    @Override
+    public void actualizarGasolina(String mensaje) {
+        System.out.println("Alerta de Gasolina: " + mensaje);
+        // Este método se llama cada vez que cambia el nivel de gasolina.
+        // El mensaje recibido tendrá el formato: "Nivel de gasolina: 8"
+
+        // Separamos el texto usando ":" como separador
+        String[] partesDelMensaje = mensaje.split(":");
+
+        // Tomamos la segunda parte (el número), quitamos espacios y lo convertimos a entero
+        String textoDelNivel = partesDelMensaje[1].trim();
+        int nivelDeGasolina = Integer.parseInt(textoDelNivel);
+
+        // Si el nivel es menor que 10, mostramos una advertencia
+        if (nivelDeGasolina < 10) {
+            System.out.println("[Alerta] Quedan " + nivelDeGasolina + " litros de gasolina. Recomendado repostar pronto.");
+        }
+    }
 }
