@@ -28,10 +28,7 @@ public class Controller{
         miModel.crearCoche("Aston Martin", "FGH 3333");
 
         Coche ferrari = miModel.getCoche("SBC 1234");
-        // modifica la velocidad
         int nuevaVelocidad = miModel.cambiarVelocidad("SBC 1234", 30);
-
-        // recoje la velocidad y la muestra (tarea de la View)
         boolean hecho = miView.muestraVelocidad("SBC 1234", miModel.getVelocidad("SBC 1234"));
 
         if (hecho) {
