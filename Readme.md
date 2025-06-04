@@ -38,18 +38,47 @@ public void actualizarGasolina(String mensaje) {
 
 # MVC
 ```mermaid
-    public void ponerGasolina(int litrosRepostar) {
-        if (litrosRepostar <= 0) {
-            System.out.println("Cantidad no valida. Agregue un valor positivo.");
-            return;
-        }
-        litros += litrosRepostar;
-        System.out.println("Se han añadido " + litrosRepostar + " litros. Total: " + litros + " litros.");
+   public class Coche {
+    String matricula;
+    String modelo;
+    Integer velocidad;
+
+    public Coche(String modelo, String matricula) {
+        this.modelo = modelo;
+        this.matricula = matricula;
+        this.velocidad = 0;
+    }
+    public String getMatricula() {
+        return matricula;
     }
 
-    public int getGasolinaActual() {
-        return litros;
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Integer getVelocidad() {
+        return velocidad;
+    }
+
+    public void aumentarVelocidad(int incremento) {
+        this.velocidad += incremento;
+    }
+
+    public void disminuirVelocidad(int decremento) {
+        this.velocidad -= decremento;
+    }
+
+    @Override
+    public String toString() {
+        return "Coche{" +
+                "matricula='" + matricula + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", velocidad=" + velocidad +
+                '}';
 ```
+
+---------------------------------------------
+
 
 # Arquitectura MVC
 
