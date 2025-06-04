@@ -69,7 +69,6 @@ sequenceDiagram
     deactivate Model
     deactivate observer
     observer->>View: actualizarGasolina()
-
 ```
 
 ---------------------------------------------
