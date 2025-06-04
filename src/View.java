@@ -115,17 +115,12 @@ public class View implements observer {
     @Override
     public void actualizarGasolina(String mensaje) {
         System.out.println("Alerta de Gasolina: " + mensaje);
-        // Este método se llama cada vez que cambia el nivel de gasolina.
-        // El mensaje recibido tendrá el formato: "Nivel de gasolina: 8"
 
-        // Separamos el texto usando ":" como separador
         String[] partesDelMensaje = mensaje.split(":");
 
-        // Tomamos la segunda parte (el número), quitamos espacios y lo convertimos a entero
         String textoDelNivel = partesDelMensaje[1].trim();
         int nivelDeGasolina = Integer.parseInt(textoDelNivel);
 
-        // Si el nivel es menor que 10, mostramos una advertencia
         if (nivelDeGasolina < 10) {
             System.out.println("[Alerta] Quedan " + nivelDeGasolina + " litros de gasolina. Recomendado repostar pronto.");
         }

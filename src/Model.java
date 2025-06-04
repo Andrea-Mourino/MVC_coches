@@ -9,22 +9,15 @@ public class Model {
     int litros = 0;
     static ArrayList<Coche> parking = new ArrayList<>();
 
-    // Lista de observadores que quieren ser notificados cuando cambie la gasolina
+
     private List<observer> observadores = new ArrayList<>();
 
-    // Capacidad máxima del depósito
     private final int CAPACIDAD_MAX = 50;
 
-    // -----------------------------------
-    // Gestión de Observadores
-    // -----------------------------------
-
-    // Método para registrar un nuevo observador (por ejemplo, una alarma)
     public void agregarObservador(observer obs) {
         observadores.add(obs);
     }
 
-    // Notificar a todos los observadores con un mensaje
     private void notifCambioGasolina(String mensaje) {
         for (observer obs : observadores) {
             obs.actualizarGasolina(mensaje);
