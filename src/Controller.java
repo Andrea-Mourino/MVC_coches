@@ -8,18 +8,18 @@ import java.lang.module.ModuleDescriptor;
 
 import java.lang.module.ModuleDescriptor;
 
-public class Controller {
+public class Controller{
     // Instanciamos la vista y el modelo
-    View miView = new View();
+    View miView = new View(this);
     Model miModel = new Model();
 
     public Controller() {
         this.miModel = new Model();
-        this.miView = new View();
     }
+
     public static void main(String[] args) {
         // Instanciamos la vista y el modelo
-        View miView = new View();
+        View miView = new View( null);
         Model miModel = new Model();
 
         // Crear tres coches
@@ -38,13 +38,13 @@ public class Controller {
             System.out.println("Correcto");
         } else {
             System.out.println("Error");
-        } ;
+        }
     }
     public void aumentarVelocidad(String matricula, int incremento) {
         Coche coche = miModel.getCoche(matricula);
         if (coche != null) {
             miModel.cambiarVelocidad(matricula, coche.velocidad + incremento);
-            System.out.println("Velocidad aumentada correctamente.");
+            System.out.println("Velocidad incrementada correctamente.");
         } else {
             System.out.println("Coche no encontrado.");
         }
@@ -54,10 +54,22 @@ public class Controller {
         Coche coche = miModel.getCoche(matricula);
         if (coche != null) {
             miModel.cambiarVelocidad(matricula, coche.velocidad - decremento);
-            System.out.println("Velocidad disminuida correctamente.");
+            System.out.println("Velocidad menguada correctamente.");
         } else {
             System.out.println("Coche no encontrado.");
         }
+    }
+
+    public void avanzar(int metros, int velocidad) {
+        miModel.avanzar(metros, velocidad);
+    }
+
+    public void repostarGasolina(int litros) {
+        miModel.ponerGasolina(litros);
+    }
+
+    public int consultarGasolina() {
+        return miModel.getGasolinaActual();
     }
 
 }
