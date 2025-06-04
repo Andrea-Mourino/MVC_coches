@@ -7,7 +7,6 @@
 5. Hacer un if que muestre el resultando dependiendo de que al cantidad de gasolina es optima y si sobra que muestre el resultado. Si no, que salte el else y muestre un sout diciendo que no tiene suficiente gasolina.
 
 
-
 # Examen 2
 
 1. Primero crear una interfaz llamada ```observer``` donde crearemos un void ```actualizarGasolina``` que hara notificar al obsservador de cuanta gasolina queda en el deposito
@@ -36,45 +35,22 @@ public void actualizarGasolina(String mensaje) {
 }
 ```
 
+# Capturas
+
+Captura donde se muestra que el coche al azanzar pierde gasolina y al bajar de 10litros salta la alerta el aviso.
+
+![Captura de pantalla_2025-06-04_14-20-28.png](../../Im%C3%A1genes/Captura%20de%20pantalla_2025-06-04_14-20-28.png)
+
+Captura donde se muestra que despues de repostar ya no salta el aviso de que queda poca gasolina
+
+![Captura de pantalla_2025-06-04_14-19-06.png](../../Im%C3%A1genes/Captura%20de%20pantalla_2025-06-04_14-19-06.png)
+
+
+
+
 # MVC
 ```mermaid
-   public class Coche {
-    String matricula;
-    String modelo;
-    Integer velocidad;
 
-    public Coche(String modelo, String matricula) {
-        this.modelo = modelo;
-        this.matricula = matricula;
-        this.velocidad = 0;
-    }
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public Integer getVelocidad() {
-        return velocidad;
-    }
-
-    public void aumentarVelocidad(int incremento) {
-        this.velocidad += incremento;
-    }
-
-    public void disminuirVelocidad(int decremento) {
-        this.velocidad -= decremento;
-    }
-
-    @Override
-    public String toString() {
-        return "Coche{" +
-                "matricula='" + matricula + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", velocidad=" + velocidad +
-                '}';
 ```
 
 ---------------------------------------------
