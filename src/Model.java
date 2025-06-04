@@ -1,11 +1,36 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * Clase encargada de manejar los datos
  */
 public class Model {
+    int litros = 0;
     static ArrayList<Coche> parking = new ArrayList<>();
+
+    // Lista de observadores que quieren ser notificados cuando cambie la gasolina
+    private List<observer> observadores = new ArrayList<>();
+
+    // Capacidad máxima del depósito
+    private final int CAPACIDAD_MAX = 50;
+
+    // -----------------------------------
+    // Gestión de Observadores
+    // -----------------------------------
+
+    // Método para registrar un nuevo observador (por ejemplo, una alarma)
+    public void agregarObservador(observer obs) {
+        observadores.add(obs);
+    }
+
+    // Notificar a todos los observadores con un mensaje
+    private void notifCambioGasolina(String mensaje) {
+        for (observer obs : observadores) {
+            obs.actualizarGasolina(mensaje);
+        }
+    }
+
 
     /**
      * Crea un coche y lo mete en el parking
@@ -87,9 +112,10 @@ public class Model {
         if (index >= 0 && index < parking.size()) {
             parking.get(index).disminuirVelocidad(decremento);
         } else {
-            System.out.println("Índice fuera de rango");
+            System.out.println("Índice fuera de alcance");
         }
     }
+
     public void mostrarTodosLosCoches(ArrayList<Coche> coches) {
         System.out.println("--- Lista de Coches ---");
         if (coches.isEmpty()) {
@@ -100,25 +126,50 @@ public class Model {
             }
         }
     }
+    /**
+     * Avanza una distancia, consume gasolina si las condiciones lo requieren
+     * @param metros cantidad de metros a avanzar
+     * @param velocidad velocidad actual del coche
+     */
+    public void avanzar(int metros, int velocidad) {
+        int posicionAlInicial = 0;
+        int posicionNueva = posicionAlInicial + metros;
 
-    public void ponerGasolina(int litros) {
-    int ingresar;
-
-    Scanner scan= new Scanner(System.in);
-
-    System.out.println("Ingresar la cantidad de gasolina: ");
-
+        if (posicionNueva > 100 || velocidad > 60) {
+            reducirGasolina();
+            System.out.println("Reduciendo gasolina...");
+        } else {
+            System.out.println("Avanzando " + metros + " metros a velocidad " + velocidad + " km/h.");
+        }
     }
 
-    public void Avanzar (int metros) {
-    int i1= 0;
-    int i2;
+    /**
+     * Reduce 10 litros de gasolina si hay suficiente
+     */
+    public boolean reducirGasolina() {
+        if (litros >= 10) {
+            litros -= 10;
+            System.out.println("Gasolina que queda: " + litros + " litros.");
+        } else {
+            System.out.println("Poca gasolina para continuar.");
+        }
+        return true;
+    }
 
-    Scanner scan= new Scanner(System.in);
+    /**
+     * Reposta una cantidad de gasolina ingresada
+     * @param litrosRepostar litros a añadir
+     */
+    public void ponerGasolina(int litrosRepostar) {
+        if (litrosRepostar <= 0) {
+            System.out.println("Cantidad no valida. Agregue un valor positivo.");
+            return;
+        }
+        litros += litrosRepostar;
+        System.out.println("Se han añadido " + litrosRepostar + " litros. Total: " + litros + " litros.");
+    }
 
-    System.out.println("Ingresar la cantidad de metros recorridos: ");
-
-
-
+    public int getGasolinaActual() {
+        return litros;
     }
 }
