@@ -5,7 +5,7 @@ public class App {
         Controller miController = new Controller();
 
         // Crear la View y pasarle el Controller
-        View miView = new View();
+        View miView = new View(miController);
 
         // Iniciar el menú
         miView.menu();
